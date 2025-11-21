@@ -9,12 +9,47 @@ Algorithm:
 4.	Call the search function and perform other linked list operations as needed.
  
 Program:
+```
+struct Node{
+    char data; 
+    struct Node *next;
+}*head;
 
-//type your code here
+void search(float data)
+{
+    struct Node *ptr;
+    char item=data;
+    int i=0,flag;
+    ptr = head;
+    if(ptr == NULL)
+    {
+    printf("\nEmpty List\n");
+    }
+    else
+    {
+        while (ptr!=NULL)
+        {
+            if(ptr->data == item)
+            {
+                printf("item %c found at location %d ",item,i+1);
+                flag=0;
+            }
+            i++;
+            ptr = ptr -> next;
+        }
+        if(flag!=0)
+        {
+            printf("Item not found\n");
+        }
+    }
+ 
+}
+```
 
 Output:
+<img width="781" height="505" alt="492407671-f6a9a2bd-3e25-4a82-bfb0-12b7dc68ad7e" src="https://github.com/user-attachments/assets/92290504-c14c-4454-9f00-d4d6c2866285" />
 
-//paste your output here
+
 
 
 
@@ -34,11 +69,44 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+**struct Node{
+    char data; 
+    struct Node *next;
+}*head;
+
+void insert(char data)
+{
+    struct Node *n=(struct Node*)malloc(sizeof(struct Node));
+    struct Node *temp;
+    
+    if(head==NULL)
+    {
+        head = n;
+        head->data = data;
+        n->next=NULL;
+        return;
+    }
+    
+    temp=head;
+    
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    
+    n->data = data;
+    n->next = NULL;
+    temp->next= n;    
+    
+}
+```
+
 
 Output:
+<img width="441" height="530" alt="492408043-7b911d3f-50db-4785-819d-c06aceef5bd6" src="https://github.com/user-attachments/assets/08963886-116e-4f3a-830d-4ddf90e5bbf4" />
 
-//paste your output here
+
 
  
 Result:
@@ -58,11 +126,28 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    char data;
+}*head;
 
+void display()
+{
+    struct Node *ptr;
+    ptr = head;
+    while(ptr != NULL)
+    {
+        printf("%c ",ptr->data);
+        ptr=ptr->next;
+    }
+}
+```
 Output:
 
-//paste your output here
+<img width="416" height="517" alt="492408260-9c6131e7-30b3-4618-83b9-8ac6a702ee68" src="https://github.com/user-attachments/assets/858122fb-7133-4e5d-a7db-9dfc89835eea" />
 
 
 Result:
@@ -83,11 +168,50 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    float data;
+}*head;
+
+void insert(float data)
+{
+   struct Node *ptr,*temp;
+   ptr = (struct Node *) malloc(sizeof(struct Node));
+   if(ptr == NULL)
+   {
+       printf("OVERFLOW\n");
+   }
+   else
+   {
+       ptr->data=data;
+       if(head == NULL)
+       {
+           ptr->next = NULL;
+           ptr->prev = NULL;
+           head = ptr;
+       }
+       else
+       {
+          temp = head;
+          while(temp->next!=NULL)
+          {
+              temp = temp->next;
+          }
+          temp->next = ptr;
+          ptr ->prev=temp;
+          ptr->next = NULL;
+        }
+    }
+}
+```
 
 Output:
+<img width="689" height="522" alt="492408484-fc989f43-cf04-4389-9157-f0891ca91a39" src="https://github.com/user-attachments/assets/983e2fbc-7b09-4ed2-871d-071b8bdd2824" />
 
-//paste your output here
+
 
 
 Result:
@@ -124,21 +248,45 @@ o	If the element is not found in any node, print a message indicating the elemen
 
 
 Program:
+```
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    float data;
+}*head;
 
-//type your code here
+void delete()
+{
+    struct Node *ptr;
+    if(head == NULL)
+    {
+        printf("UNDERFLOW\n");
+    }
+    else if(head->next == NULL)
+    {
+        head = NULL;
+        free(head);
+        printf("Node deleted\n");
+    }
+    else
+    {
+        ptr = head;
+        head = head -> next;
+        head -> prev = NULL;
+        free(ptr);
+        printf("Node deleted\n");
+    }
+}
+```
+
 
 Output:
 
-//paste your output here
-
+<img width="851" height="627" alt="492408817-6a1cbf5f-7889-4f38-8fa5-754bcdad0beb" src="https://github.com/user-attachments/assets/842cdf3e-b920-45a8-95f8-7def7d874f9e" />
 
 
 
 
 Result:
 Thus, the function that deletes a given element from a linked list is verified successfully.
-
-
-
-
-
